@@ -98,10 +98,10 @@ def data_augmentation_pipeline(data, target_columns, gan_model, noise_dim):
     X_scaled, scaler = standardize_features(X)
     
     # Step 5: Apply SMOTE
-    X_resampled, y_resampled = apply_smote(X_scaled, y)
+    #X_resampled, y_resampled = apply_smote(X_scaled, y)
     
     # Step 6: Add random noise
-    X_noisy = add_noise(X_resampled)
+    X_noisy = add_noise(X_scaled)
     
     # Step 7: Apply scaling to features
     X_augmented = scale_features(X_noisy)
@@ -109,9 +109,9 @@ def data_augmentation_pipeline(data, target_columns, gan_model, noise_dim):
     # Step 8: Inverse rescalinf of features
     X_rescaled = standardize_features(X_augmented,reverse = True,scaler = scaler)
     X_rescaled = clip_negative_values(X_rescaled, -1)
-
+    print(len(X_rescaled),len(y))
     # Step 9: Return augmented data as DataFrame
     augmented_data = pd.DataFrame(X_rescaled, columns=data.columns[1:-1])
-    augmented_data[target_columns[-1]] = y_resampled
+    #augmented_data[target_columns[-1]] = y#_resampled
     
     return augmented_data

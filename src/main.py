@@ -1,38 +1,16 @@
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-import os
+import keras
+import pipeline
 
-data_path = '../data/creditcard_2023.csv'
+data_path = '../data/imbalanced_90_10.csv'
+data = pd.read_csv(data_path)
 
-df = pd.read_csv(data_path)
+loaded_model = keras.saving.load_model("../notebooks/generator_model.keras")
 
-# Basic exploration
-print("Dataset Shape:", df.shape)
-print("Dataset Columns:", df.columns)
-print("First 5 rows of the dataset:")
-print(df.head())
+target_columns = ['id','Class']
 
-# Check for missing values
-print("Missing values in the dataset:")
-print(df.isnull().sum())
+augmented_data = pipeline.data_augmentation_pipeline(data, target_columns, loaded_model, noise_dim=100)
 
-# Summary statistics
-print("Summary Statistics:")
-print(df.describe())
+print(augmented_data.describe())
 
-# Visualize the class distribution
-sns.countplot(x='Class', data=df)
-plt.title('Class Distribution')
-plt.show()
-
-# Visualize the distribution of transaction amounts
-sns.histplot(df['Amount'], bins=50, kde=True)
-plt.title('Transaction Amount Distribution')
-plt.show()
-
-# Correlation matrix
-plt.figure(figsize=(12, 10))
-sns.heatmap(df.corr(), annot=False, cmap='coolwarm')
-plt.title('Correlation Matrix')
-plt.show()
+augmented_data.to_csv('../data/augmented_data.csv', index=False)
