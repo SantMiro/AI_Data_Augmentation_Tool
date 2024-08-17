@@ -10,7 +10,8 @@ def determine_imbalance(data):
     '''
     zero_class = data[data['Class']==0].count().iloc[-1]
     one_class = data[data['Class']==1].count().iloc[-1]
-    return round((zero_class - one_class)/2)
+    total_samples = zero_class * 0.3/0.7
+    return round((total_samples - one_class))
 
 # Assuming your GAN model is loaded and can generate synthetic data
 def generate_synthetic_data(gan_model, num_samples, noise_dim):
@@ -93,7 +94,7 @@ def data_augmentation_pipeline(data, target_columns, gan_model, noise_dim):
     
     # Step 3: Separate features and target
     X, y = separate_features_and_target(combined_data, target_columns)
-
+    print(type(y))
     # Step 4: Standardize features
     X_scaled, scaler = standardize_features(X)
     
@@ -111,7 +112,9 @@ def data_augmentation_pipeline(data, target_columns, gan_model, noise_dim):
     X_rescaled = clip_negative_values(X_rescaled, -1)
     print(len(X_rescaled),len(y))
     # Step 9: Return augmented data as DataFrame
-    augmented_data = pd.DataFrame(X_rescaled, columns=data.columns[1:-1])
-    #augmented_data[target_columns[-1]] = y#_resampled
+    augmented_data = pd.DataFrame(X_rescaled, columns=data.columns[1:-1],)
+    augmented_data = augmented_data.reset_index(drop=True)
+    y = y.reset_index(drop=True)
+    augmented_data['Class'] = y#_resampled
     
     return augmented_data

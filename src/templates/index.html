@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Style for the loading spinner */
+        .spinner {
+            display: none;
+            border: 16px solid #f3f3f3; /* Light grey */
+            border-top: 16px solid #3498db; /* Blue */
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+            margin: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+    <title>Data Augmentation Tool</title>
+</head>
+<body>
+    <h1>Data Augmentation Tool</h1>
+    <form action="/augment" method="post" enctype="multipart/form-data">
+        <label for="dataset">Upload Dataset (CSV):</label>
+        <input type="file" id="dataset" name="dataset" accept=".csv" required><br><br>
+        
+        <button type="submit">Generate Synthetic Data</button>
+    </form>
+
+    {% if download_link %}
+        <h2>Download Augmented Data:</h2>
+        <a href="{{ url_for('download_file', filename=download_link) }}" download>Click here to download the augmented data</a>
+    {% endif %}
+
+    {% if augmented_data %}
+        <h2>Generated Data:</h2>
+        <pre>{{ augmented_data }}</pre>
+    {% endif %}
+
+    <script>
+        // JavaScript to handle showing/hiding the spinner
+        document.getElementById('uploadForm').addEventListener('submit', function() {
+            document.getElementById('spinner').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
