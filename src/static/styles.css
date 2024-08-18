@@ -1,0 +1,81 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFFfff; /* Change this to your desired background color */
+    font-family: Courier, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column; /* Stack header and form vertically */
+    align-items: center; /* Center header and form horizontally */
+}
+
+header {
+    width: 100%;
+    text-align: center;
+    background-color:  #FFFFFF;  /* Adjust the color and thickness of the line */
+    padding: 20px 0;
+    box-sizing: border-box;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+    color: #3081D0;
+    font-family: 'Lucida Sans';
+}
+
+hr {
+    width: 80%;
+    border: none;
+    border-top: 2px solid #000; /* Set the thickness and color of the line */
+    margin: 0 0 20px 20px; /* Remove default margins */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin: 1000px, 1000px;
+    display: inline-block;
+    text-align: center;
+    background-color: #FFF5C2; /* Form background color */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+}
+
+p {
+    padding: 20px;
+    border-radius: 8px;
+}
+.right-column h2 {
+    color: #405D72; /* Title color for the right column */
+}
+
+
+
+.right-column p {
+    color: #555; /* Text color for the right column */
+}
+
+.container {
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+.widget {
+    text-align: center;
+    margin-top: 20px;
+}
