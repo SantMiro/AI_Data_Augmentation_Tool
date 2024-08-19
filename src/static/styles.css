@@ -26,7 +26,7 @@ header {
 header h1 {
     margin: 0;
     font-size: 2em;
-    color: #3081D0;
+    color: #1A2130;
     font-family: 'Lucida Sans';
 }
 
@@ -43,39 +43,48 @@ form {
     margin: 1000px, 1000px;
     display: inline-block;
     text-align: center;
-    background-color: #FFF5C2; /* Form background color */
+    background-color: #FDFFE2; /* Form background color */
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
 }
 
 p {
-    padding: 20px;
+    width: 80%;
     border-radius: 8px;
-}
-.right-column h2 {
-    color: #405D72; /* Title color for the right column */
+    margin: 20px 0 0 100px
 }
 
-
-
-.right-column p {
-    color: #555; /* Text color for the right column */
+.paragraph {
+    text-align: left;
 }
 
-.container {
-    text-align: center;
-    max-width: 600px;
-    width: 100%;
+.layer {
+    fill: #83B4FF;
+    stroke: black;
+    stroke-width: 2;
+}
+.text {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    text-anchor: middle;
+    fill: black;
 }
 
-.footer {
-    text-align: center;
+h2 {
     margin-top: 20px;
+    font-size: 20px;
+    color: #5A72A0;
+    font-family: 'Lucida Sans';
+    padding: 0;
+
 }
-
-
-.widget {
-    text-align: center;
+svg {
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+.footer {
+    
     margin-top: 20px;
 }

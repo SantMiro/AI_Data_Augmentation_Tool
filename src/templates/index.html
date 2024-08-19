@@ -19,13 +19,66 @@
             <button type="submit">Generate Synthetic Data</button>
         </form>
     </div>
-    <!--<p>This Data Augmentation Tool takes your imbalanced dataset of shape (n,29) and returns it at a 60/40 proportion.
-    </p>-->
-
+    <div class="paragraph">
+        <p>This Data Augmentation Tool takes your imbalanced dataset (95/5) of shape (n,29) and returns it at a 60/40 proportion.</p>
+        <p>The tool pipeline starts with a novel Generative Adversarial Network (GAN), that generates the number of samples needed to balance the dataset. The second step is to add noise to the dataset and then perform a scaling of the features.</p>
+    </div>
     {% if download_link %}
         <h2>Download Augmented Data:</h2>
         <a href="{{ url_for('download_file', filename=download_link) }}" download>Click here to download the augmented data</a>
     {% endif %}
+    <h2>Generative Adversarial Network (GAN) Pipeline:</h2>
+    <svg width="650" height="310">
+        <!-- Input -->
+        <rect x="50" y="20" width="100" height="50" class="layer"/>
+        <text x="100" y="50" class="text">Input Noise</text>
+    
+        <!-- Generator -->
+        <rect x="200" y="20" width="150" height="50" class="layer"/>
+        <text x="275" y="50" class="text">Generator</text>
+    
+        <!-- Arrow -->
+        <line x1="150" y1="45" x2="200" y2="45" stroke="black" stroke-width="2"/>
+        <polygon points="195,40 200,45 195,50" fill="black"/>
+    
+        <!-- Generated Data -->
+        <rect x="400" y="20" width="110" height="50" class="layer"/>
+        <text x="455" y="50" class="text">Generated Data</text>
+    
+        <!-- Arrow -->
+        <line x1="350" y1="45" x2="400" y2="45" stroke="black" stroke-width="2"/>
+        <polygon points="395,40 400,45 395,50" fill="black"/>
+    
+        <!-- Discriminator -->
+        <rect x="375" y="120" width="150" height="50" class="layer"/>
+        <text x="455" y="150" class="text">Discriminator</text>
+    
+        <!-- Arrow -->
+        <line x1="450" y1="70" x2="450" y2="120" stroke="black" stroke-width="2"/>
+        <polygon points="445,115 450,120 455,125" fill="black"/>
+    
+        <!-- Output -->
+        <rect x="550" y="120" width="75" height="50" class="layer"/>
+        <text x="580" y="145" class="text">Output</text>
+    
+        <!-- Arrow -->
+        <line x1="525" y1="145" x2="550" y2="145" stroke="black" stroke-width="2"/>
+        <polygon points="545,140 550,145 545,150" fill="black"/>
 
+        <!-- Real Data -->
+        <rect x="175" y="120" width="150" height="50" class="layer"/>
+        <text x="250" y="150" class="text">Real Life Data</text>
+
+        <!-- Arrow -->
+        <line x1="325" y1="145" x2="375" y2="145" stroke="black" stroke-width="2"/>
+        <polygon points="370,140 375,145 370,150" fill="black"/>
+
+
+
+    </svg>
+    <footer class="footer">
+        <p>&copy; 2024 <a href='https://github.com/SantMiro/AI_Data_Augmentation_Tool'>Santiago Miro</a></p>
+    </footer>
+    
 </body>
 </html>
