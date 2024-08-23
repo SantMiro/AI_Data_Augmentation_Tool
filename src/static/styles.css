@@ -3,7 +3,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #FFFfff; /* Change this to your desired background color */
+    background-color: #F6F5F5; /* Change this to your desired background color */
     font-family: Courier, sans-serif;
     margin: 0;
     padding: 0;
@@ -51,8 +51,8 @@ form {
 
 p {
     width: 80%;
-    border-radius: 8px;
-    margin: 20px 0 0 100px
+    border-radius: 20px;
+    margin: 20px 0 0 155px
 }
 
 .paragraph {
@@ -72,7 +72,7 @@ p {
 }
 
 h2 {
-    margin-top: 20px;
+    margin-top: 40px;
     font-size: 20px;
     color: #5A72A0;
     font-family: 'Lucida Sans';
@@ -81,6 +81,7 @@ h2 {
 }
 svg {
     display: block;
+    margin-bottom: 20px;
     margin: 0;
     padding: 0;
 }
