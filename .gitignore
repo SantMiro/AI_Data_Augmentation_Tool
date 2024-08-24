@@ -163,3 +163,5 @@ cython_debug/
 data/
 Generative_AI_for_Data_Augmentation.txt
 src/uploads/
+.dockerignore
+# Dockerfile
